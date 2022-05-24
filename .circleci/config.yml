@@ -45,16 +45,16 @@ jobs:
 
       - run: docker login $DOCKER_REPO -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-      - run: docker build -t https://checkmarx.jfrog.io/artifactory/ast-docker/circleci-machine/$IMAGE_NAME:$IMAGE_TAG .
+      - run: docker build -t checkmarx.jfrog.io/ast-docker/circleci-machine/$IMAGE_NAME:$IMAGE_TAG .
 
-      - run: docker push https://checkmarx.jfrog.io/artifactory/ast-docker/circleci-machine/$IMAGE_NAME:$IMAGE_TAG && sleep 10
+      - run: docker push checkmarx.jfrog.io/ast-docker/circleci-machine/$IMAGE_NAME:$IMAGE_TAG && sleep 10
 
       - store_artifacts:
           path: Dockerfile
 
   test_image:
     docker:
-      - image: https://checkmarx.jfrog.io/artifactory/ast-docker/circleci-machine/ubuntu-2004:202008-01
+      - image: checkmarx.jfrog.io/ast-docker/circleci-machine/ubuntu-2004:202008-01
         environment:
           <<: *image_config
 
